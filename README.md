@@ -40,11 +40,6 @@ For development, you will only need Rclone and Node.js installed in your environ
 
 
 ### Node
-- #### Node installation on Windows
-
-  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
-Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
-
 - #### Node installation on Debian based systems
 
   You can install nodejs and npm easily with apt install, just run the following commands.
@@ -71,7 +66,11 @@ If the installation was successful, you should be able to run the following comm
 
 ## Configure
 
-Rename the  `.env.sample` to `.env` and set the environment variables needed for the script.
+Rename the file `.env.sample` to `.env` and set the environment variables needed for the script.
+
+## Run Script
+
+    $ node main
 
 ## References
 
