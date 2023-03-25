@@ -41,7 +41,7 @@ const main = async () => {
   // Starts the timer, the label value is timeTaken
   console.time(timeTaken)
 
-  const actionsList = [
+  const tasksList = [
     // Brave
     await compressAndCopy(`${sourceFolder}/.config/BraveSoftware/Brave-Browser/`, 'brave-browser.tar.gz'),
 
@@ -61,16 +61,25 @@ const main = async () => {
 
     // KDE
     // "Custom Shortcuts" (System Settings > Shortcuts)
-    await copyResource(`${sourceFolder}/.config/khotkeysrc`, `${backupFolderWithNowDate}/Custom_Shortcuts_khotkeysrc`),
+    await copyResource(`${sourceFolder}/.config/khotkeysrc`, `${backupFolderWithNowDate}/kde5-custom_shortcuts_khotkeysrc`),
     // Standard Shortcuts (System Settings > Shortcuts)
-    await copyResource(`${sourceFolder}/.config/kdeglobals`, `${backupFolderWithNowDate}/Standard_Shortcuts_kdeglobals`),
+    await copyResource(`${sourceFolder}/.config/kdeglobals`, `${backupFolderWithNowDate}/kde5-standard_shortcuts_kdeglobals`),
     // Global Shortcuts (System Settings > Shortcuts)
-    await copyResource(`${sourceFolder}/.config/kglobalshortcutsrc`, `${backupFolderWithNowDate}/Global_Shortcuts_kglobalshortcutsrc`),
+    await copyResource(`${sourceFolder}/.config/kglobalshortcutsrc`, `${backupFolderWithNowDate}/kde5-global_shortcuts_kglobalshortcutsrc`),
+    // Dolphin
+    // KDE-Dolphin main configuration:
+    await copyResource(`${sourceFolder}/.config/dolphinrc`, `${backupFolderWithNowDate}/dolphin-backups-dolphinrc`),
+    await copyResource(`${sourceFolder}/.local/share/kxmlgui5/dolphin/dolphinui.rc`, `${backupFolderWithNowDate}/dolphin-backups-dolphinui.rc`),
+    // KDE-Dolphin sidebar and bookmark configuration:
+    await copyResource(`${sourceFolder}/.local/share/user-places.xbel`, `${backupFolderWithNowDate}/dolphin-backups-user-places.xbel`),
+    // Custom desktop menus services:
+    await compressAndCopy('/usr/share/kservices5/pablo*.desktop', 'kservices5.desktop.tar.gz'),
+
     // Plasma
     await compressAndCopy(`${sourceFolder}/.config/kdeconnect/`, 'plasma-backups-kdeconnect.tar.gz'),
     await compressAndCopy(`${sourceFolder}/.config/plasma*`, 'plasma-backups-plasma.tar.gz'),
   ]
-  await Promise.all(actionsList)
+  await Promise.all(tasksList)
 
   // Ends the timer and print the time taken by the piece of code.
   console.timeEnd(timeTaken)
