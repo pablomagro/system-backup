@@ -12,28 +12,28 @@ For development, you will only need Rclone and Node.js installed in your environ
 
   You can install nodejs and npm easily with apt install, just run the following commands.
 
-      $ sudo apt install rclone
+      sudo apt install rclone
 
 - #### Configure Rclone to access Google drive
 
   Once installed, run the following command to give permission to Rclone to access your Google drive:
 
-      $ rclone config
+      rclone config
 
   Finally, you can view the list of configured remotes at any time by using the following command:
 
-      $ rclone listremotes
+      rclone listremotes
 
 - ####  Mount Google Drive Locally As Virtual File System Using Rclone
 
   Create a mount point to mount your google drive files:
 
-      $ mkdir ~/gdrive
+      mkdir ~/gdrive
 
   Then, mount the Google drive using command:
 
-      $ rclone mount mygoogledrive: ~/drive/
-      $ ls ~/drive/
+      rclone mount mygoogledrive: ~/drive/
+      ls ~/drive/
 
   Now the Google drive will be mounted to your local and ready to complete the backup.
 
@@ -45,31 +45,31 @@ For development, you will only need Rclone and Node.js installed in your environ
 
   You can install nodejs and npm easily with apt install, just run the following commands.
 
-      $ sudo apt install nodejs
-      $ sudo apt install npm
+      sudo apt install nodejs
+      sudo apt install npm
 
 - #### Other Operating Systems
   You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
 If the installation was successful, you should be able to run the following command.
 
-    $ node --version
+    node --version
     v18.13.0
 
-    $ npm --version
+    npm --version
     9.2.0
 
 ## Install
 
-    $ git clone https://github.com/pablomagro/system-backup
-    $ cd system-backup
-    $ npm i
+    git clone https://github.com/pablomagro/system-backup
+    cd system-backup
+    npm i
 
 ## Configure
 
 Rename the file `.env.sample` to `.env` and set the environment variables needed for the script.
 
-Below is an example of possible configuration settings to complete the backup.
+Below is an example of possible configuration file settings to complete the backup.
 
 ```json
 [
@@ -110,7 +110,7 @@ Below is an example of possible configuration settings to complete the backup.
 
 ## Run Script
 
-    $ node main
+    node main
 
 ## References
 
