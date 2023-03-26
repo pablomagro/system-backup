@@ -1,0 +1,22 @@
+[
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/BraveSoftware/Brave-Browser/", "destination": "brave-browser.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/Code\\ -\\ Insiders/User/*.json", "destination": "code-insiders-backup.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/Code/User/*.json", "destination": "code-backup.tar.gz" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.ssh", "destination": ".ssh" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.bashrc", "destination": ".bashrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.profile", "destination": ".profile" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.aws", "destination": ".aws" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.gitconfig", "destination": ".gitconfig" },
+  { "type": "COPY_RESOURCE", "source": "/etc/apt/sources.list", "destination": "sources.list" },
+  { "type": "COPY_RESOURCE", "source": "/etc/fstab", "destination": "fstab" },
+  { "type": "COPY_RESOURCE", "source": "/etc/default/grub", "destination": "grub" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.config/khotkeysrc", "destination": "kde5-custom_shortcuts_khotkeysrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.config/kdeglobals", "destination": "kde5-standard_shortcuts_kdeglobals" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.profile", "destination": "kde5-global_shortcuts_kglobalshortcutsrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.config/dolphinrc", "destination": "dolphin-backups-dolphinrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.local/share/kxmlgui5/dolphin/dolphinui.rc", "destination": "dolphin-backups-dolphinui.rc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.local/share/user-places.xbel", "destination": "dolphin-backups-user-places.xbel" },
+  { "type": "COMPRESS_AND_COPY", "source": "/usr/share/kservices5/pablo*.desktop", "destination": "kservices5.desktop.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/kdeconnect/", "destination": "plasma-backups-kdeconnect.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" }
+]

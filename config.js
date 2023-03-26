@@ -4,5 +4,5 @@ dotenv.config();
 
 module.exports = {
   backupFolder: process.env.BACKUP_FOLDER,
-  sourceFolder: process.env.SOURCE_FOLDER
+  jsonFileName: process.env.JSON_FILE_NAME
 };

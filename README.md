@@ -33,6 +33,7 @@ For development, you will only need Rclone and Node.js installed in your environ
   Then, mount the Google drive using command:
 
       $ rclone mount mygoogledrive: ~/drive/
+      $ ls ~/drive/
 
   Now the Google drive will be mounted to your local and ready to complete the backup.
 
@@ -67,6 +68,45 @@ If the installation was successful, you should be able to run the following comm
 ## Configure
 
 Rename the file `.env.sample` to `.env` and set the environment variables needed for the script.
+
+Below is an example of possible configuration settings to complete the backup.
+
+```json
+[
+  // Brave
+  { "type": "COMPRESS_AND_COPY", "source": "/home/username/.config/BraveSoftware/Brave-Browser/", "destination": "brave-browser.tar.gz" },
+  // VSCode
+  { "type": "COMPRESS_AND_COPY", "source": "/home/username/.config/Code\\ -\\ Insiders/User/*.json", "destination": "code-insiders-backup.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/username/.config/Code/User/*.json", "destination": "code-backup.tar.gz" },
+  // System and Applications
+  { "type": "COPY_RESOURCE", "source": "/home/username/.ssh", "destination": ".ssh" },
+  { "type": "COPY_RESOURCE", "source": "/home/username/.bashrc", "destination": ".bashrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/username/.profile", "destination": ".profile" },
+  { "type": "COPY_RESOURCE", "source": "/home/username/.aws", "destination": ".aws" },
+  { "type": "COPY_RESOURCE", "source": "/home/username/.gitconfig", "destination": ".gitconfig" },
+  { "type": "COPY_RESOURCE", "source": "/etc/apt/sources.list", "destination": "sources.list" },
+  { "type": "COPY_RESOURCE", "source": "/etc/fstab", "destination": "fstab" },
+  { "type": "COPY_RESOURCE", "source": "/etc/default/grub", "destination": "grub" },
+  // KDE
+  // "Custom Shortcuts" (System Settings > Shortcuts)
+  { "type": "COPY_RESOURCE", "source": "/home/username/.config/khotkeysrc", "destination": "kde5-custom_shortcuts_khotkeysrc" },
+  // Standard Shortcuts (System Settings > Shortcuts)
+  { "type": "COPY_RESOURCE", "source": "/home/username/.config/kdeglobals", "destination": "kde5-standard_shortcuts_kdeglobals" },
+  // Global Shortcuts (System Settings > Shortcuts)
+  { "type": "COPY_RESOURCE", "source": "/home/username/.profile", "destination": "kde5-global_shortcuts_kglobalshortcutsrc" },
+  // Dolphin
+  // KDE-Dolphin main configuration:
+  { "type": "COPY_RESOURCE", "source": "/home/username/.config/dolphinrc", "destination": "dolphin-backups-dolphinrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/username/.local/share/kxmlgui5/dolphin/dolphinui.rc", "destination": "dolphin-backups-dolphinui.rc" },
+  // KDE-Dolphin sidebar and bookmark configuration:
+  { "type": "COPY_RESOURCE", "source": "/home/username/.local/share/user-places.xbel", "destination": "dolphin-backups-user-places.xbel" },
+  // Custom desktop menus services:
+  { "type": "COMPRESS_AND_COPY", "source": "/usr/share/kservices5/username*.desktop", "destination": "kservices5.desktop.tar.gz" },
+  // Plasma
+  { "type": "COMPRESS_AND_COPY", "source": "/home/username/.config/kdeconnect/", "destination": "plasma-backups-kdeconnect.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/username/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" }
+]
+```
 
 ## Run Script
 
