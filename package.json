@@ -8,7 +8,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./main.js",
+    "mount:drive": "./mount-drive.sh",
+    "umount:drive": "fusermount -u ~/gdrive"
   },
   "keywords": [],
   "author": "",

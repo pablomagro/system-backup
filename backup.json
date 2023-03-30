@@ -4,6 +4,8 @@
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/Code/User/*.json", "destination": "code-backup.tar.gz" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.ssh", "destination": ".ssh" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.bashrc", "destination": ".bashrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.zshrc", "destination": ".zshrc" },
+  { "type": "COPY_RESOURCE", "source": "/home/pablo/.config/fish/config.fish", "destination": "config.fish" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.profile", "destination": ".profile" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.aws", "destination": ".aws" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.gitconfig", "destination": ".gitconfig" },
@@ -18,5 +20,6 @@
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.local/share/user-places.xbel", "destination": "dolphin-backups-user-places.xbel" },
   { "type": "COMPRESS_AND_COPY", "source": "/usr/share/kservices5/pablo*.desktop", "destination": "kservices5.desktop.tar.gz" },
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/kdeconnect/", "destination": "plasma-backups-kdeconnect.tar.gz" },
-  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" }
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" },
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/Scripts", "destination": "scripts-backup.tar.gz" }
 ]
