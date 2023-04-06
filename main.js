@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { backupFolder, jsonFileName } = require('./config')
+const { backupFolder, jsonFileName, passphrase } = require('./config')
 const fsExtra = require('fs-extra')
 const { exec, execSync } = require('child_process')
 
@@ -16,11 +16,6 @@ const copyResource = async (source, destination) => {
   }
 }
 
-const compress = async (whatToCompress, compressedName) => {
-  await executeCommand(`rm -rvf ${compressedName}`)
-  await executeCommand(`tar -czvf ${compressedName} ${whatToCompress}`)
-}
-
 const executeCommand = async (command) => {
   console.log(`Executing command: ${command}`);
   const child = exec(command)
@@ -32,9 +27,27 @@ const executeCommand = async (command) => {
   await new Promise((resolve) => child.on('close', resolve))
 }
 
+const encrypt = async (what) =>
+  await executeCommand(`echo ${passphrase} | gpg -c --batch --yes --passphrase-fd 0 ${what}`)
+
+const cleanUp = async () =>
+  await executeCommand('rm -rf *.tar.gz .*.gpg *.gpg')
+
+const compress = async (whatToCompress, compressedName) => {
+  await executeCommand(`rm -rvf ${compressedName}`)
+  await executeCommand(`tar -czvf ${compressedName} ${whatToCompress}`)
+}
+
 async function compressAndCopy(whatToCompress, compressedName) {
   await compress(whatToCompress, compressedName)
   await copyResource(compressedName, compressedName)
+}
+
+async function compressEncryptAndCopy(whatToCompress, compressedName) {
+  await compress(whatToCompress, compressedName)
+  await encrypt(compressedName)
+  await copyResource(`${compressedName}.gpg`, `${compressedName}.gpg`)
+  await executeCommand(`rm ${compressedName}`) // Not needed anymore.
 }
 
 const getTasksList = async () => {
@@ -44,6 +57,8 @@ const getTasksList = async () => {
   for (const task of tasksList) {
     if (task.type === 'COMPRESS_AND_COPY') {
       tasksListPromise.push(() => compressAndCopy(task.source, task.destination))
+    } else if (task.type === 'COMPRESS_ENCRYPT_AND_COPY') {
+      tasksListPromise.push(() => compressEncryptAndCopy(task.source, task.destination))
     } else if (task.type === 'COPY_RESOURCE') {
       tasksListPromise.push(() => copyResource(task.source, task.destination))
     }
@@ -70,6 +85,6 @@ const main = async () => {
   } catch (error) {
     console.error(error.message)
   } finally {
-    await executeCommand('rm -rf *.tar.gz')
+    await cleanUp()
   }
 })()

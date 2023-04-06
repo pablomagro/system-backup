@@ -7,7 +7,7 @@
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.zshrc", "destination": ".zshrc" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.config/fish/config.fish", "destination": "config.fish" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.profile", "destination": ".profile" },
-  { "type": "COPY_RESOURCE", "source": "/home/pablo/.aws", "destination": ".aws" },
+  { "type": "COMPRESS_ENCRYPT_AND_COPY", "source": "/home/pablo/.aws", "destination": ".aws" },
   { "type": "COPY_RESOURCE", "source": "/home/pablo/.gitconfig", "destination": ".gitconfig" },
   { "type": "COPY_RESOURCE", "source": "/etc/apt/sources.list", "destination": "sources.list" },
   { "type": "COPY_RESOURCE", "source": "/etc/fstab", "destination": "fstab" },
@@ -21,5 +21,6 @@
   { "type": "COMPRESS_AND_COPY", "source": "/usr/share/kservices5/pablo*.desktop", "destination": "kservices5.desktop.tar.gz" },
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/kdeconnect/", "destination": "plasma-backups-kdeconnect.tar.gz" },
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" },
-  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/Scripts", "destination": "scripts-backup.tar.gz" }
+  { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/Scripts", "destination": "scripts-backup.tar.gz" },
+  { "type": "COMPRESS_ENCRYPT_AND_COPY", "source": "/home/pablo/my-backup/*.gpg", "destination": "my-backup-encrypted.tar.gz" }
 ]
