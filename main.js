@@ -3,6 +3,7 @@
 const { backupFolder, jsonFileName, passphrase } = require('./config')
 const fsExtra = require('fs-extra')
 const { exec, execSync } = require('child_process')
+const { throws } = require('assert')
 
 const dateString = execSync('date +"%d-%m-%Y_%H%m%s"').toString()
 const backupFolderWithNowDate = `${backupFolder}/${dateString}`.trimEnd()
@@ -21,7 +22,8 @@ const executeCommand = async (command) => {
   const child = exec(command)
 
   child.on('error', (error) => {
-    console.error(`error: ${error.message}`)
+    console.error(error.message)
+    throw Error(error.message)
   })
 
   await new Promise((resolve) => child.on('close', resolve))
