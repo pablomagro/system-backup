@@ -22,5 +22,5 @@
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/kdeconnect/", "destination": "plasma-backups-kdeconnect.tar.gz" },
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/.config/plasma", "destination": "plasma-backups-plasma.tar.gz" },
   { "type": "COMPRESS_AND_COPY", "source": "/home/pablo/Scripts", "destination": "scripts-backup.tar.gz" },
-  { "type": "COMPRESS_ENCRYPT_AND_COPY", "source": "/home/pablo/my-backup/*.gpg", "destination": "my-backup-encrypted.tar.gz" }
+  { "type": "COMPRESS_ENCRYPT_AND_COPY", "source": "/home/pablo/Documents/my-backup/*", "destination": "my-backup-encrypted.tar.gz" }
 ]
