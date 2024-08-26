@@ -3,7 +3,6 @@
 const { backupFolder, jsonFileName, passphrase } = require('./config')
 const fsExtra = require('fs-extra')
 const { exec, execSync } = require('child_process')
-const { throws } = require('assert')
 
 const dateString = execSync('date +"%d-%m-%Y_%H%m%s"').toString()
 const backupFolderWithNowDate = `${backupFolder}/${dateString}`.trimEnd()
