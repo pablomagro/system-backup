@@ -1,21 +1,17 @@
 # System Backup
-
 A simple project to complete a simple backup of Debian system based operating system.
 
 ---
 ## Requirements
-
 For development, you will only need Rclone and Node.js installed in your environment. Rclone is user to connect with Google Drive along other cloud storage providers.
 
 ### Rclone
 - #### Rclone installation on Debian, Ubuntu, Linux Mint and other Deb-based systems:
-
   You can install nodejs and npm easily with apt install, just run the following commands.
 
       sudo apt install rclone
 
 - #### Configure Rclone to access Google drive
-
   Once installed, run the following command to give permission to Rclone to access your Google drive:
 
       rclone config
@@ -24,25 +20,26 @@ For development, you will only need Rclone and Node.js installed in your environ
 
       rclone listremotes
 
-- ####  Mount Google Drive Locally As Virtual File System Using Rclone
+  Perhaps a some stage some stage couldn't fetch token and you need to refresh it: `invalid_grant: maybe token expired? - try refreshing with`
 
+      rclone config reconnect mygoogledrive:
+
+- ####  Mount Google Drive Locally As Virtual File System Using Rclone
   Create a mount point to mount your google drive files:
 
-      mkdir ~/gdrive
+      mkdir ~/.gdrive
 
   Then, mount the Google drive using command:
 
-      rclone mount mygoogledrive: ~/drive/
-      ls ~/drive/
+      rclone -v mount mygoogledrive:/backup ~/.mylocalgoogledrivefolder
+      ls ~/.mylocalgoogledrivefolder
 
   Now the Google drive will be mounted to your local and ready to complete the backup.
 
 - Please check this [link](https://ostechnix.com/how-to-mount-google-drive-locally-as-virtual-file-system-in-linux/) for more information.
 
-
 ### Node
 - #### Node installation on Debian based systems
-
   You can install nodejs and npm easily with apt install, just run the following commands.
 
       sudo apt install nodejs
@@ -60,13 +57,11 @@ If the installation was successful, you should be able to run the following comm
     9.2.0
 
 ## Install
-
     git clone https://github.com/pablomagro/system-backup
     cd system-backup
     npm i
 
 ## Configure
-
 Rename the file `.env.sample` to `.env` and set the environment variables needed for the script.
 
 Below is an example of possible configuration file settings to complete the backup.
