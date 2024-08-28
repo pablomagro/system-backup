@@ -35,25 +35,25 @@ const cleanUp = async () =>
   await executeCommand('rm -rf *.tar.gz .*.gpg *.gpg')
 
 const compress = async (whatToCompress, compressedName) => {
-  await executeCommand(`rm -rvf ${compressedName}`)
-  await executeCommand(`tar -czvf ${compressedName} ${whatToCompress}`)
+  await executeCommand(`rm -rf ${compressedName}`)
+  await executeCommand(`tar -czf ${compressedName} ${whatToCompress}`);
 }
 
-async function compressAndCopy(whatToCompress, compressedName) {
+const compressAndCopy = async (whatToCompress, compressedName) => {
   await compress(whatToCompress, compressedName)
   await copyResource(compressedName, compressedName)
 }
 
-async function compressEncryptAndCopy(whatToCompress, compressedName) {
+const compressEncryptAndCopy = async (whatToCompress, compressedName) => {
   await compress(whatToCompress, compressedName)
   await encrypt(compressedName)
   await copyResource(`${compressedName}.gpg`, `${compressedName}.gpg`)
   await executeCommand(`rm ${compressedName}`) // Not needed anymore.
 }
 
-const getTasksList = async () => {
+const getTasksList = () => {
   const tasksListPromise = []
-  const tasksList = await fsExtra.readJson(jsonFileName)
+  const tasksList = fsExtra.readJsonSync(jsonFileName);
 
   for (const task of tasksList) {
     if (task.type === 'COMPRESS_AND_COPY') {
@@ -73,7 +73,7 @@ const main = async () => {
   // Starts the timer, the label value is timeTaken
   console.time(timeTaken)
 
-  const promiseTasks = await getTasksList()
+  const promiseTasks = getTasksList()
   await Promise.all(promiseTasks.map(async (func) => await func()))
 
   // Ends the timer and print the time taken by the piece of code.
